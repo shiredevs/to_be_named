@@ -1,18 +1,20 @@
 import React, { JSX } from 'react';
-import './LandingPage.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import style from './LandingPage.module.css';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
+import Button from '../components/Button';
+import { ROUTE_PATHS } from '../components/router/AppRoutes';
+import Icon from '../components/Icon';
+import applicationIcons from '../utils/IconLibrary';
 
 const LandingPage = (): JSX.Element => {
   const navigate: NavigateFunction = useNavigate();
 
   return (
-    <div className="landing-page" role="landing-page-container">
-      <FontAwesomeIcon className="icon" icon={['fas', 'cloud-sun']} aria-hidden={false} />
-      <p>Welcome to Solarbank</p>
-      <button className="button" onClick={() => navigate('/form')}>
-        begin
-      </button>
+    <div className={style.landingPage} role="landing-page-container">
+      <Icon iconRef={applicationIcons.LANDING_PAGE} />
+      <h1 className={style.heading}>Solarbank</h1>
+      <p className={style.paragraph}>estimate your solar energy savings</p>
+      <Button handleClick={() => navigate(ROUTE_PATHS.FORM)} label={'begin'} />
     </div>
   );
 };
